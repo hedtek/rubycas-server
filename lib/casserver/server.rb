@@ -651,7 +651,7 @@ module CASServer
             pgt = generate_proxy_granting_ticket(@pgt_url, st)
             @pgtiou = pgt.iou if pgt
           end
-          @extra_attributes = st.granted_by_tgt.extra_attributes || {}
+          @extra_attributes = st.granted_by_tgt.extra_attributes.stringify_keys || {}
         end
       else
         @success = false
@@ -700,7 +700,7 @@ module CASServer
             @pgtiou = pgt.iou if pgt
           end
 
-          @extra_attributes = t.granted_by_tgt.extra_attributes || {}
+          @extra_attributes = t.granted_by_tgt.extra_attributes.stringify_keys || {}
         end
       else
         @success = false
